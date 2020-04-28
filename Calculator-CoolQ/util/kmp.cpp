@@ -96,7 +96,7 @@ size_t util_kmp::KMP_Find_Count(const char* findstr, const char* substr)
 {
 	size_t find_len = strlen(findstr), subs_len = strlen(substr);
 
-	if (subs_len == 0 || find_len < subs_len) return 0;
+	if (subs_len == 0 || find_len < subs_len) return util_kmp::npos;
 
 	size_t* next = KMP_MakeNext(substr, subs_len, false);
 

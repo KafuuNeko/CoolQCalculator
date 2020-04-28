@@ -4,11 +4,12 @@
 * Written by Coxxs & Thanks for the help of orzFly
 */
 
+#include <algorithm>
 #include "string"
 #include "cqp.h"
 #include "appmain.h" //应用AppID等信息，请正确填写，否则酷Q可能无法加载
-#include "../util/math_exp.h"
-#include "../util/kmp.h"
+#include "../dispose.h"
+
 
 using namespace std;
 
@@ -107,30 +108,27 @@ CQEVENT(int32_t, __eventDiscussMsg, 32)(int32_t subType, int32_t msgId, int64_t 
 	return EVENT_IGNORE; //关于返回值说明, 见“_eventPrivateMsg”函数
 }
 
-void dispose_message(int32_t _type, int64_t _from_discuss, int64_t _from_qq, const char* _msg)
+void dispose_message(int32_t type, int64_t from_discuss, int64_t from_qq, const char* msg)
 {
-	constexpr const char* cmd = "计算";
-	size_t pos = util_kmp::KMP_Find(_msg, cmd);
-
-	if (pos == util_kmp::npos)
+	
+	std::string result;
+	if (!Dispose(type, from_discuss, from_qq, msg, result))
 	{
 		return;
 	}
-	
-	double result = calculate_expr(_msg + pos + strlen(cmd));
 
-	switch (_type)
+	switch (type)
 	{
 	case 1://私聊信息
-		CQ_sendPrivateMsg(ac, _from_qq, std::to_string(result).c_str());
+		CQ_sendPrivateMsg(ac, from_qq, result.c_str());
 		break;
 
 	case 2://群聊信息
-		CQ_sendGroupMsg(ac, _from_discuss, std::to_string(result).c_str());
+		CQ_sendGroupMsg(ac, from_discuss, ("[CQ:at,qq=" + std::to_string(from_qq) + "] " + result).c_str());
 		break;
 
 	case 3://讨论组信息
-		CQ_sendDiscussMsg(ac, _from_discuss, std::to_string(result).c_str());
+		CQ_sendDiscussMsg(ac, from_discuss, ("[CQ:at,qq=" + std::to_string(from_qq) + "] " + result).c_str());
 		break;
 
 	default:

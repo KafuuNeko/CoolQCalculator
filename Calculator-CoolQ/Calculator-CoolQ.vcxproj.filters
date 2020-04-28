@@ -27,10 +27,13 @@
     <ClInclude Include="cqsdk\cqp.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="util\math_exp.h">
+    <ClInclude Include="util\kmp.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="util\kmp.h">
+    <ClInclude Include="util\rpn.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dispose.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -44,10 +47,13 @@
     <ClCompile Include="cqsdk\appmain.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="util\math_exp.cpp">
+    <ClCompile Include="util\kmp.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="util\kmp.cpp">
+    <ClCompile Include="util\rpn.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="dispose.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
