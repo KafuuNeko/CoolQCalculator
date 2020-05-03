@@ -1,4 +1,5 @@
 #pragma one
+#include <string>
 
-double CalculateExpr(const char* _expr);
+double CalculateExpr(const std::string& _expr);
 

@@ -71,7 +71,7 @@ bool Dispose(int32_t type, int64_t from_discuss, int64_t from_qq, std::string ms
 
 	result = "0";
 	try {
-		double calc = CalculateExpr(msg.substr(index + cmd.length(), index_end - cmd.length()).c_str());
+		double calc = CalculateExpr(msg.substr(index + cmd.length(), index_end - cmd.length()));
 		if (calc != 0)
 		{
 			if (to_bit == 0 || to_bit == 10)
