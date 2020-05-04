@@ -113,7 +113,7 @@ inline bool isMathNotation(const char& ch)
 ** @param ch 数学操作符字符
 ** @return 优先级
 */
-constexpr int getMathNotationPriority(const char& ch)
+inline int getMathNotationPriority(const char& ch)
 {
 	if (ch == '(')
 		return 0;
